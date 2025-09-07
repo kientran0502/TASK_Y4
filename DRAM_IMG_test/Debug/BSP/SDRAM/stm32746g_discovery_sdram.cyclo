@@ -1,0 +1,11 @@
+../BSP/SDRAM/stm32746g_discovery_sdram.c:187:6:BSP_SDRAM_Init	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:287:9:BSP_SDRAM_DeInit	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:313:6:BSP_SDRAM_Initialization_sequence	1
+../BSP/SDRAM/stm32746g_discovery_sdram.c:375:9:BSP_SDRAM_ReadData	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:394:9:BSP_SDRAM_ReadData_DMA	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:413:9:BSP_SDRAM_WriteData	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:432:9:BSP_SDRAM_WriteData_DMA	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:449:9:BSP_SDRAM_Sendcmd	2
+../BSP/SDRAM/stm32746g_discovery_sdram.c:465:6:BSP_SDRAM_DMA_IRQHandler	1
+../BSP/SDRAM/stm32746g_discovery_sdram.c:476:13:BSP_SDRAM_MspInit	1
+../BSP/SDRAM/stm32746g_discovery_sdram.c:567:13:BSP_SDRAM_MspDeInit	1
