@@ -66,7 +66,8 @@ Tests/usb_transfer_file_v1/test_usb_transfer_file.o: \
  ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_ctlreq.h \
  D:/Task_Y4/DRAM_IMG_test/Services/File/usb_receive.h \
  D:/Task_Y4/DRAM_IMG_test/Services/File/file_chunk_tranfer.h \
- D:/Task_Y4/DRAM_IMG_test/BSP/CRC/crc.h
+ D:/Task_Y4/DRAM_IMG_test/BSP/CRC/crc.h \
+ D:/Task_Y4/DRAM_IMG_test/BSP/Timer/counter_timer.h
 ../Tests/usb_transfer_file_v1/test_usb_transfer_file.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
@@ -135,3 +136,4 @@ D:/Task_Y4/DRAM_IMG_test/Services/Queuex/queuex.h:
 D:/Task_Y4/DRAM_IMG_test/Services/File/usb_receive.h:
 D:/Task_Y4/DRAM_IMG_test/Services/File/file_chunk_tranfer.h:
 D:/Task_Y4/DRAM_IMG_test/BSP/CRC/crc.h:
+D:/Task_Y4/DRAM_IMG_test/BSP/Timer/counter_timer.h:

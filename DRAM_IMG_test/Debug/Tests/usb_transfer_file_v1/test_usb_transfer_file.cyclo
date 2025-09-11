@@ -1,5 +1,5 @@
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:31:6:File_Init	1
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:48:13:Send_Response	1
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:58:6:Task_Command	8
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:115:6:Task_Receive	11
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:210:6:TaskSendImage	7
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:33:6:File_Init	1
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:50:13:Send_Response	1
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:60:6:Task_Command	8
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:117:6:Task_Receive	11
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:215:6:TaskSendImage	7

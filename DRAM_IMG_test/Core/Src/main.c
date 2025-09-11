@@ -28,6 +28,7 @@
 #include "stm32746g_discovery_sdram.h"
 #include "debug_logger.h"
 #include "queuex.h"
+#include "counter_timer.h"
 
 /*****Test*****/
 #include "test_usb_transfer_file.h"
@@ -179,7 +180,7 @@ int main(void)
   xTaskCreate(Task_Receive, "Receive", 1024*5, NULL, 3, &hTaskReceive);   //có thể  giảm
 
 
-  xTaskCreate(Debuglogging, "Debuglogging", 128, NULL, osPriorityIdle + 1, NULL);
+//  xTaskCreate(Debuglogging, "Debuglogging", 128, NULL, osPriorityIdle + 1, NULL);
 
   /* USER CODE END RTOS_THREADS */
 
@@ -306,7 +307,7 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 1 */
   htim3.Instance = TIM3;
-  htim3.Init.Prescaler = 99;
+  htim3.Init.Prescaler = 9999;
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 65535;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -546,9 +547,12 @@ void TaskBlinkLED(void *pvParameters)
 {
     while (1)
     {
+//    	Timer_Start_Counter();
     	HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_1);
 //    	uart_ring_buffer_put("LED Toggle\n", 11);
         vTaskDelay(pdMS_TO_TICKS(500));
+//        Timer_End_Counter();
+//        Timer_Get_Duration();
     }
 }
 

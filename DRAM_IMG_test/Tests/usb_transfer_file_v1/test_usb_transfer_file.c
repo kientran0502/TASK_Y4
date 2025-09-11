@@ -12,6 +12,8 @@
 #include "queuex.h"
 #include "usb_receive.h"
 #include "crc.h"
+#include "counter_timer.h"
+
 
 // Global state variables
 extern Queuex_t usb_rx_cmd_queue;
@@ -124,6 +126,7 @@ void Task_Receive(void *pvParameters)
         		switch(current_file_state)
         		{
         			case FILE_STATE_GET_SIZE:
+        				Timer_Start_Counter();
         	            file_size_bytes[file_size_index++] = byte;
         	            if (file_size_index >= 4)
         	            {
@@ -163,6 +166,8 @@ void Task_Receive(void *pvParameters)
 							{
 								current_file.is_valid = 1;
 								Send_Response("OK\n");
+								Timer_End_Counter();
+								Timer_Get_Duration();
 								current_file_state = FILE_STATE_GET_SIZE;
 								current_device_state = STATE_WAIT_COMMAND;
 								vTaskPrioritySet(hTaskReceive, 3);
@@ -222,6 +227,7 @@ void TaskSendImage(void *pvParameters)
 			}
 			else
 			{
+				Timer_Start_Counter();
 				// Gửi kích thước file
 				uint8_t size_bytes[4];
 				size_bytes[0] = (current_file.size >> 0) & 0xFF;
@@ -282,6 +288,8 @@ void TaskSendImage(void *pvParameters)
 				crc_bytes[2] = (current_file.calculated_crc >> 16) & 0xFF;
 				crc_bytes[3] = (current_file.calculated_crc >> 24) & 0xFF;
 				CDC_Transmit_HS(crc_bytes, 4);
+				Timer_End_Counter();
+				Timer_Get_Duration();
 
 				vTaskDelay(pdMS_TO_TICKS(10));  // Đợi đảm bảo dữ liệu được gửi hết
 

@@ -1,5 +1,6 @@
 "./BSP/CRC/crc.o"
 "./BSP/SDRAM/stm32746g_discovery_sdram.o"
+"./BSP/Timer/counter_timer.o"
 "./Core/Src/freertos.o"
 "./Core/Src/main.o"
 "./Core/Src/stm32f7xx_hal_msp.o"

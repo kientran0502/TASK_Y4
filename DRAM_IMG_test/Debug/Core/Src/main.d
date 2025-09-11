@@ -61,6 +61,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  D:/Task_Y4/DRAM_IMG_test/BSP/SDRAM/stm32746g_discovery_sdram.h \
  D:/Task_Y4/DRAM_IMG_test/Services/Logger/debug_logger.h \
  D:/Task_Y4/DRAM_IMG_test/Services/Queuex/queuex.h \
+ D:/Task_Y4/DRAM_IMG_test/BSP/Timer/counter_timer.h \
  D:/Task_Y4/DRAM_IMG_test/Tests/usb_transfer_file_v1/test_usb_transfer_file.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F7xx_HAL_Driver/Inc/stm32f7xx_hal.h:
@@ -125,4 +126,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 D:/Task_Y4/DRAM_IMG_test/BSP/SDRAM/stm32746g_discovery_sdram.h:
 D:/Task_Y4/DRAM_IMG_test/Services/Logger/debug_logger.h:
 D:/Task_Y4/DRAM_IMG_test/Services/Queuex/queuex.h:
+D:/Task_Y4/DRAM_IMG_test/BSP/Timer/counter_timer.h:
 D:/Task_Y4/DRAM_IMG_test/Tests/usb_transfer_file_v1/test_usb_transfer_file.h:

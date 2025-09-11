@@ -1,0 +1,4 @@
+../BSP/Timer/counter_timer.c:30:10:Timer_Get_Counter	1
+../BSP/Timer/counter_timer.c:35:10:Timer_Start_Counter	1
+../BSP/Timer/counter_timer.c:41:10:Timer_End_Counter	1
+../BSP/Timer/counter_timer.c:49:10:Timer_Get_Duration	2
