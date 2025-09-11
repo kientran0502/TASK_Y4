@@ -6,7 +6,7 @@
 
 # C:\Users\hoang\Desktop\Đo_an_1.docx
 # C:\Users\hoang\Desktop\Bao_cao_thuc_tap.pptx
-# C:\Users\hoang\Desktop\anh2.jpg
+# C:\Users\hoang\Desktop\download.png
 
 
 
@@ -18,7 +18,7 @@ import threading
 from CRC import calculate_crc32  # giữ nguyên hàm CRC bạn viết
 
 # Cố định COM14
-ser = serial.Serial("COM14", baudrate=115200, timeout=1.5)
+ser = serial.Serial("COM14", baudrate=115200, timeout=1.5, write_timeout=5)
 
 
 def wait_response(timeout=3):

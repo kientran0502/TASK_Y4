@@ -132,13 +132,13 @@ int main(void)
   MX_CRC_Init();
   /* USER CODE BEGIN 2 */
 
-  Queue_Init(&usb_rx_cmd_queue, file_buffer, sizeof(command_buffer));
+  Queue_Init(&usb_rx_cmd_queue, command_buffer, sizeof(command_buffer));
   Queue_Init(&usb_rx_file_queue, file_buffer, sizeof(file_buffer));
 
   MX_USB_DEVICE_Init();
 
   HAL_TIM_Base_Start(&htim3);
-
+//  command_buffer[0] = 0;
   /* USER CODE END 2 */
 
   /* Init scheduler */

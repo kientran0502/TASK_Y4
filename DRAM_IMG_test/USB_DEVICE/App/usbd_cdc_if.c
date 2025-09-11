@@ -278,6 +278,13 @@ static int8_t CDC_Receive_HS(uint8_t* Buf, uint32_t *Len)
   {
     Queue_Push_Buffer(&usb_rx_cmd_queue, Buf, *Len);
   }
+//  else
+//  {
+//	  // Bỏ qua dữ liệu nếu trạng thái không hợp lệ
+//	          USBD_CDC_SetRxBuffer(&hUsbDeviceHS, &Buf[0]);
+//	          USBD_CDC_ReceivePacket(&hUsbDeviceHS);
+//	          return (USBD_OK);
+//  }
 
   USBD_CDC_SetRxBuffer(&hUsbDeviceHS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceHS);

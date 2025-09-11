@@ -17,7 +17,7 @@
 extern Queuex_t usb_rx_cmd_queue;
 extern Queuex_t usb_rx_file_queue;
 
-extern uint8_t cmd_buf[64];
+extern uint8_t command_buffer[64];
 
 TaskHandle_t hTaskCommand;
 TaskHandle_t hTaskReceive;
@@ -271,6 +271,7 @@ void TaskSendImage(void *pvParameters)
 
 				    // Tăng offset lên
 				    offset += send_size;
+				    vTaskDelay(1);
 				}
 				Queue_Set_Tail_Position(&usb_rx_file_queue, current_file.start_file_index);
 				current_file.calculated_crc = CRC_HW_Calculation(Queue_Get_Tail_Address(&usb_rx_file_queue), current_file.size);
