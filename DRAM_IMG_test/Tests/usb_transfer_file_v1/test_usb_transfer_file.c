@@ -48,7 +48,7 @@ void File_Init(void)
 
 //// Utility function to send response safely
 static void Send_Response(const char* response) {
-   CDC_Transmit_HS((uint8_t*)response, strlen(response));
+   CDC_Transmit_FS((uint8_t*)response, strlen(response));
 }
 
 
@@ -142,8 +142,12 @@ void Task_Receive(void *pvParameters)
         	                }
 							else
 							{
-								vTaskDelay(100); // đợi nhận đủ file tồi mới tính CRC
+								vTaskDelay(100); // đợi nhận đủ file tồi mới tính CRC nếu không dễ sai
 								current_file.start_file_index = Queue_Get_Tail_Index(&usb_rx_file_queue);
+								while((Queue_Get_Header_Index(&usb_rx_file_queue) - Queue_Get_Tail_Index(&usb_rx_file_queue)) < current_file.size)
+								{
+									vTaskDelay(1);
+								}
 								current_file.calculated_crc = CRC_HW_Calculation(Queue_Get_Tail_Address(&usb_rx_file_queue), current_file.size);
 								Queue_Set_Tail_Position(&usb_rx_file_queue, current_file.start_file_index + current_file.size);   // Bỏ qua dữ liệu đã tính CRC
 								current_file.end_file_index = current_file.start_file_index + current_file.size;
@@ -234,7 +238,7 @@ void TaskSendImage(void *pvParameters)
 				size_bytes[1] = (current_file.size >> 8) & 0xFF;
 				size_bytes[2] = (current_file.size >> 16) & 0xFF;
 				size_bytes[3] = (current_file.size >> 24) & 0xFF;
-				CDC_Transmit_HS(size_bytes, 4);
+				CDC_Transmit_FS(size_bytes, 4);
 
 				// Gửi dữ liệu file
 				Queue_Set_Tail_Position(&usb_rx_file_queue, current_file.start_file_index);
@@ -270,7 +274,7 @@ void TaskSendImage(void *pvParameters)
 				    uint8_t *data_ptr = Queue_Get_Tail_Address(&usb_rx_file_queue);
 
 				    // Truyền dữ liệu qua USB CDC
-				    CDC_Transmit_HS(data_ptr, send_size);
+				    CDC_Transmit_FS(data_ptr, send_size);
 
 				    // Cập nhật vị trí tail
 				    Queue_Set_Tail_Position(&usb_rx_file_queue, Queue_Get_Tail_Index(&usb_rx_file_queue) + send_size);
@@ -287,7 +291,7 @@ void TaskSendImage(void *pvParameters)
 				crc_bytes[1] = (current_file.calculated_crc >> 8) & 0xFF;
 				crc_bytes[2] = (current_file.calculated_crc >> 16) & 0xFF;
 				crc_bytes[3] = (current_file.calculated_crc >> 24) & 0xFF;
-				CDC_Transmit_HS(crc_bytes, 4);
+				CDC_Transmit_FS(crc_bytes, 4);
 				Timer_End_Counter();
 				Timer_Get_Duration();
 

@@ -18,10 +18,10 @@ import threading
 from CRC import calculate_crc32  # giữ nguyên hàm CRC bạn viết
 
 # Cố định COM14
-ser = serial.Serial("COM14", baudrate=115200, timeout=1.5, write_timeout=5)
+ser = serial.Serial("COM14", baudrate=115200, timeout=50, write_timeout=50)
 
 
-def wait_response(timeout=3):
+def wait_response(timeout=50):
     """Đọc phản hồi từ device trong khoảng timeout giây"""
     start = time.time()
     response = b""
@@ -85,7 +85,7 @@ def send_file(filepath):
     ser.flush()
 
     # 6. Chờ ACK/ERR
-    resp = wait_response(2.0)
+    resp = wait_response(50.0)
     if resp:
         print("[DEVICE]", resp)
     else:

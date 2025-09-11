@@ -1,5 +1,5 @@
 ../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:33:6:File_Init	4	static
 ../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:50:13:Send_Response	16	static
 ../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:60:6:Task_Command	24	static
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:117:6:Task_Receive	24	static
-../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:215:6:TaskSendImage	40	static
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:117:6:Task_Receive	32	static
+../Tests/usb_transfer_file_v1/test_usb_transfer_file.c:219:6:TaskSendImage	40	static
