@@ -35,10 +35,14 @@ extern CAN_HandleTypeDef hcan1;
 static uint8_t server_address = 255;
 static unsigned int server_received = 0;
 
-uint8_t Can_data[] = "Tran Hoang Kien";
+csp_can_interface_data_t can_interface_data_func =
+{
+		.cfp_packet_counter = 1,
+		.tx_func = csp_can_tx_frame,
+};
 
 /* Add interface(s) */
-csp_iface_t csp_if_can = {0};
+volatile csp_iface_t csp_if_can = {0};
 
 void CSP_Init(void)
 {
@@ -46,12 +50,13 @@ void CSP_Init(void)
   /* Initialising CSP */
 uart_ring_buffer_put("Initialising CSP 2.0\r\n", 22);
 
+
+
 csp_if_can.name = CSP_IF_CAN_DEFAULT_NAME,
 csp_if_can.driver_data = &hcan1,
-//csp_if_can.interface_data
 csp_if_can.netmask = (uint16_t)csp_id_get_host_bits(), //thiết lập netmask, giống với subnet mask của IP
 //csp_if_can.nexthop = csp_can2_tx,
-csp_if_can.interface_data = &Can_data;
+csp_if_can.interface_data = &can_interface_data_func;
 csp_if_can.mtu = 64, ///?????????????????
 
   csp_init();
