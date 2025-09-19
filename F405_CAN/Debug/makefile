@@ -9,9 +9,20 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Tests/subdir.mk
+-include Services/Logger/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include CSP/src/interfaces/subdir.mk
+-include CSP/src/crypto/subdir.mk
+-include CSP/src/arch/freertos/subdir.mk
+-include CSP/src/subdir.mk
+-include CSP/can_stm32/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -60,8 +71,8 @@ all: main-build
 main-build: F405_CAN.elf secondary-outputs
 
 # Tool invocations
-F405_CAN.elf F405_CAN.map: $(OBJS) $(USER_OBJS) C:\Users\hoang\STM32CubeIDE\workspace_1.19.0\F405_CAN\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "F405_CAN.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\hoang\STM32CubeIDE\workspace_1.19.0\F405_CAN\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F405_CAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+F405_CAN.elf F405_CAN.map: $(OBJS) $(USER_OBJS) D:\TASK_Y4\F405_CAN\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "F405_CAN.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\TASK_Y4\F405_CAN\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="F405_CAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
